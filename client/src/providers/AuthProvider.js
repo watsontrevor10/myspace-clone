@@ -11,6 +11,7 @@ export class AuthProvider extends React.Component {
   handleRegister = (user, history) => {
     axios.post('/api/auth', user)
       .then( res => {
+        debugger
         this.setState({ user: res.data.data, })
         history.push('/')
       })
