@@ -7,6 +7,7 @@ import NoMatch from './components/NoMatch';
 import FetchUser from './components/FetchUser';
 import { Container, } from 'semantic-ui-react';
 import { Switch, Route, } from 'react-router-dom';
+import ProtectedRoute from './components/ProtectedRoute'
 
 const App = () => (
   <>
@@ -14,7 +15,7 @@ const App = () => (
     <FetchUser>
       <Container>
         <Switch>
-          <Route exact path='/' component={Home} />
+          <ProtectedRoute exact path='/' component={Home} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/register' component={Register} />
 
