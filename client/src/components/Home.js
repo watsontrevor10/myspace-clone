@@ -53,18 +53,18 @@ const Home = () => {
               { friend.birthdate }
             </Card.Meta>
             <Card.Content extra>
-              <Button color="red" icon basic onClick={ () => downVote(friend.id)}>
-                <Icon name="thumbs down" />
+              <Button color="green" icon basic onClick={ () => upVote(friend.id)}>
+                <Icon name="add circle" />
               </Button>
-              <Button color="blue" icon basic onClick={ () => upVote(friend.id)}>
-                <Icon name="thumbs up" />
+              <Button color="red" icon basic onClick={ () => downVote(friend.id)}>
+                <Icon name="minus circle" />
               </Button>
             </Card.Content>
           </Card.Content>
         </Card>
-        <Button as={Link} to='/my_friends' color="blue">
+        {/* <Button as={Link} to='/my_friends' color="blue">
           My Friends
-        </Button>
+        </Button> */}
       </div>
     )
   } else {

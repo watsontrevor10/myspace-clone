@@ -19,4 +19,5 @@ class User < ActiveRecord::Base
     ids = ids.empty? ? [0] : ids 
     Profile.where("id IN (?)", ids)
   end
+
 end

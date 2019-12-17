@@ -1,5 +1,5 @@
 import React, { useState, useEffect, } from 'react'
-import { Card, Image, Divider, } from 'semantic-ui-react'
+import { Card, Image, Divider, Icon, Button, } from 'semantic-ui-react'
 import axios from 'axios'
 
 const MyFriends = () => {
@@ -9,6 +9,10 @@ const MyFriends = () => {
     axios.get('/api/friends')
       .then( res => setProfiles(res.data))
   }, [])
+
+  const unfriend = (id) => {
+    setProfiles(profiles.filter( profile => profile.id !== id ))
+  }
 
   return (
     <Card.Group itemsPerRow={4}>
@@ -21,6 +25,9 @@ const MyFriends = () => {
               { friend.name }
             </Card.Header>
           </Card.Content>
+          <Button color='red' icon basic onClick={ () => unfriend(friend.id)}>
+            <Icon name='minus circle' />
+          </Button>
         </Card>
       ))}
     </Card.Group>
