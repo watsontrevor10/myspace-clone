@@ -1,6 +1,6 @@
 import React, { useState, useEffect, } from 'react'
 import axios from 'axios'
-// import { Link, } from 'react-router-dom'
+import Posts from '../components/Posts'
 import { Header, Card, Image, Icon, Button, Segment, Grid, Divider, } from 'semantic-ui-react'
 
 const Home = () => {
@@ -41,14 +41,15 @@ const Home = () => {
               { friend.name }
             </Card.Header>
             <Card.Description>
-              { friend.favorite_color }
+              Fave Color: { friend.favorite_color }
             </Card.Description>
-            <Card.Meta>
-              { friend.relationship_status }
-            </Card.Meta>
-            <Card.Meta>
-              { friend.birthdate }
-            </Card.Meta>
+            <Card.Description>
+              Relationship Status: { friend.relationship_status }
+            </Card.Description>
+            <Card.Description>
+              Birthday: { friend.birthday }
+            </Card.Description>
+            <Divider />
             <Card.Content extra>
               <Button color="green" icon basic onClick={ () => upVote(friend.id)}>
                 <Icon name="add circle" />
@@ -71,6 +72,7 @@ const Home = () => {
 
 const HomePage = () => (
   <div>
+    <br />
     <Header as='h1' textAlign='center'>MySpace</Header>
     <br />
     <Segment placeholder>
@@ -78,7 +80,7 @@ const HomePage = () => (
         <Divider vertical />
         <Grid.Row verticalAlign='middle'>
           <Grid.Column>
-            placeholder
+            <Posts />
           </Grid.Column>
           <Grid.Column>
             <Home />

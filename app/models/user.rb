@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   include DeviseTokenAuth::Concerns::User
 
+  has_many :posts 
+  
   serialize :friends, Array 
 
   def self.random_friend(ids)

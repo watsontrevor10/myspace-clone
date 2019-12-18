@@ -1,6 +1,7 @@
 import React from 'react';
 import Home from './components/Home';
 import MyFriends from './components/MyFriends';
+import Posts from './components/Posts';
 import Navbar from './components/Navbar';
 import Login from './components/Login';
 import Register from './components/Register';
@@ -18,6 +19,7 @@ const App = () => (
         <Switch>
           <ProtectedRoute exact path='/' component={Home} />
           <ProtectedRoute exact path='/my_friends' component={MyFriends} />
+          <ProtectedRoute exact path='/posts' component={Posts} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/register' component={Register} />
 
