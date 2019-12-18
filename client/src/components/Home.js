@@ -1,7 +1,7 @@
 import React, { useState, useEffect, } from 'react'
 import axios from 'axios'
-import { Link, } from 'react-router-dom'
-import { Header, Card, Image, Icon, Button, } from 'semantic-ui-react'
+// import { Link, } from 'react-router-dom'
+import { Header, Card, Image, Icon, Button, Segment, Grid, Divider, } from 'semantic-ui-react'
 
 const Home = () => {
   const [ profiles, setProfiles ] = useState([])
@@ -34,10 +34,7 @@ const Home = () => {
   if (friend) {
     return (
       <div>
-        <br />
-        <Header as='h1' textAlign='center'>MySpace</Header>
-        <br />
-        <Card>
+        <Card centered>
           <Image src={friend.avatar} />
           <Card.Content>
             <Card.Header>
@@ -68,8 +65,28 @@ const Home = () => {
       </div>
     )
   } else {
-    return <Header as='h2' textAlign='center'>You Have No Friends</Header>
+    return <Header as='h2' textAlign='center'>No Friend Recommendations</Header>
   }
 }
 
-export default Home
+const HomePage = () => (
+  <div>
+    <Header as='h1' textAlign='center'>MySpace</Header>
+    <br />
+    <Segment placeholder>
+      <Grid columns={2} stackable textAlign='center'>
+        <Divider vertical />
+        <Grid.Row verticalAlign='middle'>
+          <Grid.Column>
+            placeholder
+          </Grid.Column>
+          <Grid.Column>
+            <Home />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+    </Segment>
+  </div>
+)
+
+export default HomePage
