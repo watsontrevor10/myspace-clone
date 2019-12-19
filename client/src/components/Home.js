@@ -83,6 +83,7 @@ const HomePage = () => (
             <Posts />
           </Grid.Column>
           <Grid.Column>
+            <Header centered>Recommended Friend</Header>
             <Home />
           </Grid.Column>
         </Grid.Row>

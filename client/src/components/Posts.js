@@ -1,6 +1,6 @@
 import React, { useState, useEffect, } from 'react'
 import PostsForm from '../components/PostsForm'
-import { Segment, List, Header, Button, } from 'semantic-ui-react'
+import { Segment, List, Header, Button, Icon, Divider, Grid, } from 'semantic-ui-react'
 import axios from 'axios'
 
 const Posts = (props) => {
@@ -14,13 +14,32 @@ const Posts = (props) => {
     })
   }, [])
 
+  const deletePost = (id) => {
+    axios.delete(`/api/posts/${id}`)
+      .then( res => {
+        setPosts(posts.filter( post => post.id !== id ))
+      })
+  }
+
   const renderPosts = () => {
     return posts.map( post => (
-      <Segment key={post.id}>
-        <List.Description>
-          { post.body }
-        </List.Description>
-      </Segment>
+      <>
+        <Segment key={post.id}>
+          <Grid columns={2} >
+            <Grid.Column>
+              <List.Description>
+                { post.body }
+              </List.Description>
+            </Grid.Column>
+            <Grid.Column>
+              <Button onClick={() => deletePost(post.id)} basic icon negative >
+                <Icon color='red' name='trash' />
+              </Button>
+            </Grid.Column>
+          </Grid>
+          <Divider vertical />
+        </Segment>
+      </>
     ))
   }
 
@@ -32,7 +51,7 @@ const Posts = (props) => {
       <br />
       { showForm ? <PostsForm add={addPost} toggleForm={setShowForm}/> : null }
       <Button onClick={() => setShowForm(!showForm)}>
-        {showForm ? 'Close Form' : 'Show Form'}
+        {showForm ? 'Cancel' : 'Add Post'}
       </Button>
       <List>
         { renderPosts() }

@@ -14,6 +14,15 @@ class Api::PostsController < ApplicationController
     end
   end
 
+  def update
+    
+  end
+
+  def destroy
+    @post = current_user.posts.find(params[:id])
+    @post.destroy
+  end
+
   private 
   def post_params
     params.require(:post).permit(:body)

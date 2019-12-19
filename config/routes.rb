@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   namespace :api do
     resources :profiles
     resources :friends
-    resources :posts, only: [:index, :create, :show]
+    resources :posts, only: [:index, :create, :show, :update, :destroy]
   end
 end
